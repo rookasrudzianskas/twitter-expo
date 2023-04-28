@@ -45,10 +45,10 @@ const Tweet = ({tweet}) => {
               <Text className="text-[#a0a1a7] text-[14px]">{tweet.numberOfLikes}</Text>
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={0.7} className="flex flex-row items-center space-x-1 text-[#a0a1a7]">
-              <Feather name="bar-chart-2" size={22} color="#a0a1a7" />
+              <Feather name="bar-chart-2" size={19} color="#a0a1a7" />
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={0.7} className="flex flex-row items-center space-x-1 text-[#a0a1a7]">
-              <Feather name="share" size={19} color="#a0a1a7" />
+              <Feather name="share" size={16} color="#a0a1a7" />
             </TouchableOpacity>
           </View>
         </View>
