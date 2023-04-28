@@ -34,15 +34,15 @@ const Tweet = ({tweet}) => {
           <View className="flex flex-row items-center justify-between">
             <TouchableOpacity activeOpacity={0.7} className="flex flex-row items-center space-x-1 text-[#a0a1a7]">
               <Feather name="message-circle" size={18} color="#a0a1a7" />
-              <Text className="text-[#a0a1a7] text-[14px]">{tweet.numberOfComments}</Text>
+              <Text className="text-[#a0a1a7] text-[14px]">{tweet.numberOfComments || 0}</Text>
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={0.7} className="flex flex-row items-center space-x-1 text-[#a0a1a7]">
               <EvilIcons name="retweet" size={26} color="#a0a1a7" />
-              <Text className="text-[#a0a1a7] text-[14px]">{tweet.numberOfRetweets}</Text>
+              <Text className="text-[#a0a1a7] text-[14px]">{tweet.numberOfRetweets || 0}</Text>
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={0.7} className="flex flex-row items-center space-x-1 text-[#a0a1a7]">
               <AntDesign name="hearto" size={16} color="#a0a1a7" />
-              <Text className="text-[#a0a1a7] text-[14px]">{tweet.numberOfLikes}</Text>
+              <Text className="text-[#a0a1a7] text-[14px]">{tweet.numberOfLikes || 0}</Text>
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={0.7} className="flex flex-row items-center space-x-1 text-[#a0a1a7]">
               <Feather name="bar-chart-2" size={19} color="#a0a1a7" />
