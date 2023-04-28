@@ -1,17 +1,16 @@
 // @ts-nocheck
 import React from 'react';
-import {Text, View} from "./Themed";
-import {Image, TouchableOpacity} from "react-native";
-import {Feather} from "@expo/vector-icons";
+import {Image, TouchableOpacity, View, Text} from "react-native";
+import {AntDesign, EvilIcons, Feather} from "@expo/vector-icons";
 
 const Tweet = ({tweet}) => {
   return (
-    <TouchableOpacity activeOpacity={0.9} className="flex flex-row p-5">
+    <TouchableOpacity activeOpacity={0.9} className="flex flex-row my-3 mx-5">
       <View>
         <Image src={tweet.user.image} className="w-12 h-12 rounded-full" />
       </View>
-      <View className="ml-3 pr-5">
-        <View className="flex flex-col pr-5">
+      <View className="ml-3">
+        <View className="flex flex-col">
           <View className="flex flex-row w-full">
             <View className="flex flex-row items-center flex-1">
               <Text className="font-bold text-[16px]">{tweet.user.name}</Text>
@@ -23,14 +22,36 @@ const Tweet = ({tweet}) => {
             </TouchableOpacity>
           </View>
         </View>
-        <View className="pr-5 mt-1">
+        <View className="mt-1 w-[310px]">
           <Text className="text-[15px]">{tweet.content}</Text>
         </View>
         {tweet.image && (
-        <View className="pr-5 mt-3">
-          <Image src={tweet.image} className="h-40 rounded-2xl w-full pr-5" />
+        <View className="mt-3">
+          <Image src={tweet.image} className="h-40 w-full rounded-2xl" />
         </View>
         )}
+        <View className="mr-5 mt-3">
+          <View className="flex flex-row items-center justify-between">
+            <TouchableOpacity activeOpacity={0.7} className="flex flex-row items-center space-x-1 text-[#a0a1a7]">
+              <Feather name="message-circle" size={18} color="#a0a1a7" />
+              <Text className="text-[#a0a1a7] text-[14px]">{tweet.numberOfComments}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.7} className="flex flex-row items-center space-x-1 text-[#a0a1a7]">
+              <EvilIcons name="retweet" size={26} color="#a0a1a7" />
+              <Text className="text-[#a0a1a7] text-[14px]">{tweet.numberOfRetweets}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.7} className="flex flex-row items-center space-x-1 text-[#a0a1a7]">
+              <AntDesign name="hearto" size={16} color="#a0a1a7" />
+              <Text className="text-[#a0a1a7] text-[14px]">{tweet.numberOfLikes}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.7} className="flex flex-row items-center space-x-1 text-[#a0a1a7]">
+              <Feather name="bar-chart-2" size={22} color="#a0a1a7" />
+            </TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.7} className="flex flex-row items-center space-x-1 text-[#a0a1a7]">
+              <Feather name="share" size={19} color="#a0a1a7" />
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     </TouchableOpacity>
   );
