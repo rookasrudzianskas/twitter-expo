@@ -2,10 +2,14 @@
 import React from 'react';
 import {Image, TouchableOpacity, View, Text} from "react-native";
 import {AntDesign, EvilIcons, Feather} from "@expo/vector-icons";
+import {Link, useRouter} from 'expo-router';
+
 
 const Tweet = ({tweet}) => {
+  const router = useRouter();
+
   return (
-    <TouchableOpacity activeOpacity={0.9} className="flex flex-row my-3 mx-5">
+    <TouchableOpacity onPress={() => router.push("/tweet")} activeOpacity={0.9} className="flex flex-row my-3 mx-5">
       <View>
         <Image src={tweet.user.image} className="w-12 h-12 rounded-full" />
       </View>
@@ -26,9 +30,9 @@ const Tweet = ({tweet}) => {
           <Text className="text-[15px]">{tweet.content}</Text>
         </View>
         {tweet.image && (
-        <View className="mt-3">
-          <Image src={tweet.image} className="h-40 w-full rounded-2xl" />
-        </View>
+          <View className="mt-3">
+            <Image src={tweet.image} className="h-40 w-full rounded-2xl" />
+          </View>
         )}
         <View className="mr-5 mt-3">
           <View className="flex flex-row items-center justify-between">
