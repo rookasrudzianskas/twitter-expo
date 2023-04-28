@@ -22,7 +22,7 @@ const tweets = [
     user: {
       id: '123456789',
       name: 'Jeff B',
-      username: 'bezos',
+      username: 'bezos_',
       image:
         'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/jeff.jpeg',
     },
