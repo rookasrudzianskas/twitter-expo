@@ -7,7 +7,6 @@ import {Link, useRouter} from 'expo-router';
 
 const Tweet = ({tweet}) => {
   const router = useRouter();
-
   return (
     <TouchableOpacity onPress={() => router.push(`/feed/tweet/${tweet.id}`)} activeOpacity={0.9} className="flex flex-row my-3 mx-5">
       <View>
