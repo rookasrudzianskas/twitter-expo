@@ -1,10 +1,11 @@
 //@ts-nocheck
-import React from 'react';
+import React, {useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, Image, TextInput} from 'react-native';
 import {Ionicons} from "@expo/vector-icons";
 import {useRouter} from "expo-router";
 
 const NewTweet = () => {
+  const [text, setText] = useState<string>('')
   const user = {
     id: 'u1',
     username: 'byrookas',
@@ -32,11 +33,19 @@ const NewTweet = () => {
       <View className="flex flex-row items-start mt-6 w-full">
         <Image className="w-10 h-10 rounded-full" source={{uri: user.image}} />
         <View className="flex flex-col ml-3 flex-1 h-36">
-          <View className="flex flex-row border mt-2 inline-flex w-[80px] items-center justify-center space-x-1 rounded-full border-2 border-[#1da1f2]">
+          <View className="flex flex-row border mt-1 inline-flex w-[80px] items-center justify-center space-x-1 rounded-full border-2 border-[#1da1f2]">
             <Text className="text-[#1da1f2] font-semibold">Public</Text>
             <Ionicons name="chevron-down-sharp" size={18} color="#1da1f2" />
           </View>
-          <TextInput placeholder={'What is happening'} className="text-[14px] mt-2 w-full" multiline numberOfLines={5} style={{flex: 1}} />
+          <TextInput
+            placeholder={'What is happening'}
+            className="text-[14px] mt-2 w-full"
+            multiline
+            numberOfLines={5}
+            style={{flex: 1}}
+            value={text}
+            onChangeText={setText}
+          />
         </View>
       </View>
     </View>
