@@ -17,6 +17,8 @@ const NewTweet = () => {
 
   const onTweetPress = () => {
     console.warn('Tweeted');
+    setText('');
+    router.back();
   }
 
   return (
