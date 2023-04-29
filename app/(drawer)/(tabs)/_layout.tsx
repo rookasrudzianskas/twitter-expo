@@ -1,6 +1,7 @@
+// @ts-nocheck
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import {Link, Tabs, useNavigation} from 'expo-router';
+import {Image, Pressable, TouchableOpacity, useColorScheme} from 'react-native';
 
 import Colors from '../../../constants/Colors';
 
@@ -12,6 +13,23 @@ function TabBarIcon(props: {
   color: string;
 }) {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+}
+
+export const AvatarHeader = () => {
+  const navigation = useNavigation();
+  const user = {
+      id: 'u1',
+      username: 'byrookas',
+      name: 'Rokas Rudzianskas',
+      image:
+        'https://pbs.twimg.com/profile_images/1595750905537871873/DMcn47S6_400x400.jpg',
+    };
+
+  return (
+    <TouchableOpacity onPress={() => navigation.openDrawer()} activeOpacity={0.7} className="ml-5">
+      <Image src={user.image} className="h-7 w-7 rounded-full" />
+    </TouchableOpacity>
+  )
 }
 
 export default function TabLayout() {
@@ -40,6 +58,9 @@ export default function TabLayout() {
                 )}
               </Pressable>
             </Link>
+          ),
+          headerLeft: () => (
+            <AvatarHeader />
           ),
         }}
       />

@@ -12,7 +12,9 @@ export const unstable_settings = {
 export default function DrawerLayout() {
   return (
     <Drawer>
-      <Drawer.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Drawer.Screen name="(tabs)" options={{ headerShown: false, title: 'Home' }} />
+      <Drawer.Screen name="bookmarks" options={{ headerShown: false, title: 'Bookmarks' }} />
+      <Drawer.Screen name="twitter-blue" options={{ headerShown: false, title: 'Twitter Blue' }} />
     </Drawer>
   )
 }
