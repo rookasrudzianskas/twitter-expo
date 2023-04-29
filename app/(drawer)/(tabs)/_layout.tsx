@@ -26,7 +26,7 @@ export const AvatarHeader = () => {
     };
 
   return (
-    <TouchableOpacity onPress={() => navigation.openDrawer()} activeOpacity={0.7} className="ml-5">
+    <TouchableOpacity onPress={() => navigation.openDrawer()} activeOpacity={0.7} className="ml-6">
       <Image src={user.image} className="h-7 w-7 rounded-full" />
     </TouchableOpacity>
   )
