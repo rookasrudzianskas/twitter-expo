@@ -9,7 +9,7 @@ const Tweet = ({tweet}) => {
   const router = useRouter();
 
   return (
-    <TouchableOpacity onPress={() => router.push(`/feed/tweet/${tweet.id}`)} activeOpacity={0.9} className="flex flex-row my-3 mx-5">
+    <TouchableOpacity onPress={() => router.push(`/tweet/${tweet.id}`)} activeOpacity={0.9} className="flex flex-row my-3 mx-5">
       <View>
         <Image src={tweet.user.image} className="w-12 h-12 rounded-full" />
       </View>
