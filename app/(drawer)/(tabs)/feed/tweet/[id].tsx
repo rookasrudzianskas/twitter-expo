@@ -1,8 +1,8 @@
 //@ts-nocheck
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
-import tweets from '../../assets/data/tweets'
-import Tweet from "../../components/Tweet";
+import tweets from '../../../../../assets/data/tweets'
+import Tweet from "../../../../../components/Tweet";
 import {useSearchParams} from "expo-router";
 
 export default function TweetScreen() {
