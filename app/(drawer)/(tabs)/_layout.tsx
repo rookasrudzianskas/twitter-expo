@@ -45,7 +45,6 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
       }}
-      // initialRouteName="two"
     >
       <Tabs.Screen
         name="feed"
