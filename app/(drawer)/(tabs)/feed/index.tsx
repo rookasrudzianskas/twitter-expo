@@ -5,6 +5,7 @@ import {Feather} from "@expo/vector-icons";
 import React, {useEffect, useState} from "react";
 import {Link, useRouter} from 'expo-router';
 import Tweet from "../../../../components/Tweet";
+import {listTweets} from "../../../../lib/api/tweets";
 
 
 export default function TabOneScreen() {
@@ -13,19 +14,8 @@ export default function TabOneScreen() {
 
   useEffect(() => {
     const fetchTweets = async () => {
-      // fetch the tweets
-      const url = 'http://localhost:3000/tweet';
-      const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbklkIjo2fQ.FOgqCYFyq9B-OREo6n5Ttu-m9WO8LYuezDLybm0W2FY';
-      const res = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${authToken}`
-        }
-      });
-      if(res.status !== 200) {
-        Alert.alert('Error fetching tweets');
-      }
-      const data = await res.json();
-      setTweets(data);
+      const response = listTweets();
+      setTweets(response);
     }
     fetchTweets()
   }, [])
