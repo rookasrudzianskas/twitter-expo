@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Text, View } from '../../../../components/Themed';
-import {Image, TouchableOpacity, FlatList} from "react-native";
+import {Image, TouchableOpacity, FlatList, Alert} from "react-native";
 import {Feather} from "@expo/vector-icons";
 import React, {useEffect, useState} from "react";
 import {Link, useRouter} from 'expo-router';
@@ -17,12 +17,15 @@ export default function TabOneScreen() {
       const url = 'http://localhost:3000/tweet';
       const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbklkIjo2fQ.FOgqCYFyq9B-OREo6n5Ttu-m9WO8LYuezDLybm0W2FY';
       const res = await fetch(url, {
-        method: 'GET',
         headers: {
           Authorization: `Bearer ${authToken}`
         }
       });
-      console.log(res);
+      if(res.status !== 200) {
+        Alert.alert('Error fetching tweets');
+      }
+      const data = await res.json();
+      setTweets(data);
     }
     fetchTweets()
   }, [])
