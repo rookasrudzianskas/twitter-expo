@@ -14,6 +14,14 @@ export default function TabOneScreen() {
   useEffect(() => {
     const fetchTweets = async () => {
       // fetch the tweets
+      const url = 'http://localhost:3000/tweet';
+      const res = await fetch(url, {
+        method: 'GET',
+        headers: {
+          Authorization: ``
+        }
+      });
+      console.log(res);
     }
     fetchTweets()
   }, [])
