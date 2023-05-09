@@ -1,13 +1,14 @@
 //@ts-nocheck
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, TextInput} from 'react-native';
 
 const SignIn = () => {
   return (
     <View>
-      <Text>
-        byrookas 🚀
-      </Text>
+      <TextInput
+        placeholder={'Email'}
+        className="h-10 flex-1 border"
+      />
     </View>
   );
 };
