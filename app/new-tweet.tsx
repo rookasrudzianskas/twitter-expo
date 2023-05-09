@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, Image, TextInput, ActivityIndicator} from 'react-native';
 import {Ionicons} from "@expo/vector-icons";
 import {useRouter} from "expo-router";
-import {useMutation} from "@tanstack/react-query";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {createTweet} from "../lib/api/tweets";
 
 const NewTweet = () => {
@@ -16,15 +16,29 @@ const NewTweet = () => {
       'https://pbs.twimg.com/profile_images/1595750905537871873/DMcn47S6_400x400.jpg',
   }
   const router = useRouter();
+  const queryClient = useQueryClient();
 
-  const { mutate, isLoading, error } = useMutation({
+  const { mutateAsync, isLoading, error } = useMutation({
     mutationFn: createTweet,
+    onSuccess: (data) => {
+      // queryClient.invalidateQueries({ queryKey: ['tweets'] })
+      queryClient.setQueriesData(['tweets'], (old) => {
+        return [
+          data,
+          ...old,
+        ]
+      })
+    }
   })
 
-  const onTweetPress = () => {
-    mutate({ content: text })
-    setText('');
-    router.back();
+  const onTweetPress = async () => {
+    try {
+      await mutateAsync({ content: text })
+      setText('');
+      router.back();
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   if(isLoading) {
