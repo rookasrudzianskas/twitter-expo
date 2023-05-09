@@ -6,19 +6,17 @@ import React, {useEffect, useState} from "react";
 import {Link, useRouter} from 'expo-router';
 import Tweet from "../../../../components/Tweet";
 import {listTweets} from "../../../../lib/api/tweets";
+import {useQuery} from "@tanstack/react-query";
 
 
 export default function TabOneScreen() {
   const router = useRouter()
   const [tweets, setTweets] = useState([])
 
-  useEffect(() => {
-    const fetchTweets = async () => {
-      const response = listTweets();
-      setTweets(response);
-    }
-    fetchTweets()
-  }, [])
+  const { isLoading, error, data } = useQuery({
+    queryKey: ['tweets'],
+    queryFn: listTweets,
+  })
 
   return (
     <View className="h-full">
