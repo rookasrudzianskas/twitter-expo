@@ -1,11 +1,8 @@
-import {Alert} from "react-native";
+import {API_URL, authToken} from "./config";
 
-const API_URL = 'http://localhost:3000';
 export const listTweets = async () => {
   // fetch the tweets
-  const url = API_URL + '/tweet';
-  const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbklkIjo2fQ.FOgqCYFyq9B-OREo6n5Ttu-m9WO8LYuezDLybm0W2FY';
-  const res = await fetch(url, {
+  const res = await fetch(`${API_URL}/tweet`, {
     headers: {
       Authorization: `Bearer ${authToken}`
     }
