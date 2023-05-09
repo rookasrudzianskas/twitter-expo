@@ -1,8 +1,10 @@
 //@ts-nocheck
 import React, {useState} from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Image, TextInput} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, Image, TextInput, ActivityIndicator} from 'react-native';
 import {Ionicons} from "@expo/vector-icons";
 import {useRouter} from "expo-router";
+import {useMutation} from "@tanstack/react-query";
+import {createTweet} from "../lib/api/tweets";
 
 const NewTweet = () => {
   const [text, setText] = useState<string>('')
@@ -15,10 +17,22 @@ const NewTweet = () => {
   }
   const router = useRouter();
 
+  const { mutate, isLoading, error } = useMutation({
+    mutationFn: createTweet,
+  })
+
   const onTweetPress = () => {
-    console.warn('Tweeted');
+    mutate({ content: text })
     setText('');
     router.back();
+  }
+
+  if(isLoading) {
+    return <View className="h-screen flex items-center justify-center"><ActivityIndicator /></View>
+  }
+
+  if(error) {
+    return <View className="h-screen flex items-center justify-center"><Text>{error.message}</Text></View>
   }
 
   return (

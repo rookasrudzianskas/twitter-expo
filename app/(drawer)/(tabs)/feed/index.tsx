@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Text, View } from '../../../../components/Themed';
-import {Image, TouchableOpacity, FlatList, Alert} from "react-native";
+import {Image, TouchableOpacity, FlatList, Alert, ActivityIndicator} from "react-native";
 import {Feather} from "@expo/vector-icons";
 import React, {useEffect, useState} from "react";
 import {Link, useRouter} from 'expo-router';
@@ -17,6 +17,14 @@ export default function TabOneScreen() {
     queryKey: ['tweets'],
     queryFn: listTweets,
   })
+
+  if(isLoading) {
+    return <View className="h-screen flex items-center justify-center"><ActivityIndicator /></View>
+  }
+
+  if(error) {
+    return <View className="h-screen flex items-center justify-center"><Text>{error.message}</Text></View>
+  }
 
   return (
     <View className="h-full">
