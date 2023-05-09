@@ -15,10 +15,11 @@ export default function TabOneScreen() {
     const fetchTweets = async () => {
       // fetch the tweets
       const url = 'http://localhost:3000/tweet';
+      const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbklkIjo2fQ.FOgqCYFyq9B-OREo6n5Ttu-m9WO8LYuezDLybm0W2FY';
       const res = await fetch(url, {
         method: 'GET',
         headers: {
-          Authorization: ``
+          Authorization: `Bearer ${authToken}`
         }
       });
       console.log(res);
