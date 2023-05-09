@@ -1,15 +1,23 @@
 // @ts-nocheck
 import { Text, View } from '../../../../components/Themed';
-import tweets from '../../../../assets/data/tweets';
 import {Image, TouchableOpacity, FlatList} from "react-native";
 import {Feather} from "@expo/vector-icons";
-import React from "react";
-import Tweet from "../../../../components/Tweet";
+import React, {useEffect, useState} from "react";
 import {Link, useRouter} from 'expo-router';
+import Tweet from "../../../../components/Tweet";
 
 
 export default function TabOneScreen() {
   const router = useRouter()
+  const [tweets, setTweets] = useState([])
+
+  useEffect(() => {
+    const fetchTweets = async () => {
+      // fetch the tweets
+    }
+    fetchTweets()
+  }, [])
+
   return (
     <View className="h-full">
       <FlatList
