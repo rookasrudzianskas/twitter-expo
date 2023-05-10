@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
-// import { login } from '../../lib/api/auth';
+import { login } from '../../lib/api/auth';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ const SignIn = () => {
   const onSignIn = async () => {
     console.warn('Sign in: ', email);
     try {
-      // await login({ email });
+      await login({ email });
       router.push({ pathname: '/authenticate', params: { email } });
     } catch (e) {
       Alert.alert('Error', e.message);

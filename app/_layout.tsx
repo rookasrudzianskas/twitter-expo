@@ -9,6 +9,7 @@ import {
   QueryClientProvider,
   useQuery,
 } from '@tanstack/react-query';
+import AuthContextProvider from "../context/AuthContext";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -46,24 +47,26 @@ function RootLayoutNav() {
 
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-          <Stack>
-            <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
-            <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-            {/*<Stack.Screen name="tweet/[id]" options={{ title: 'Tweet' }} />*/}
-            <Stack.Screen name="new-tweet" options={{ headerShown: false }} />
-            <Stack.Screen
-              name="(auth)/signIn"
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="(auth)/authenticate"
-              options={{ title: 'Confirm' }}
-            />
-          </Stack>
-        </ThemeProvider>
-      </QueryClientProvider>
+      <AuthContextProvider>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+            <Stack>
+              <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+              <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+              {/*<Stack.Screen name="tweet/[id]" options={{ title: 'Tweet' }} />*/}
+              <Stack.Screen name="new-tweet" options={{ headerShown: false }} />
+              <Stack.Screen
+                name="(auth)/signIn"
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="(auth)/authenticate"
+                options={{ title: 'Confirm' }}
+              />
+            </Stack>
+          </ThemeProvider>
+        </QueryClientProvider>
+      </AuthContextProvider>
     </>
   );
 }
