@@ -4,10 +4,11 @@ import {Text, View, StyleSheet, TouchableOpacity, Image, TextInput, ActivityIndi
 import {Ionicons} from "@expo/vector-icons";
 import {useRouter} from "expo-router";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {createTweet} from "../lib/api/tweets";
+import {useTweetsApi} from "../lib/api/tweets";
 
 const NewTweet = () => {
   const [text, setText] = useState<string>('')
+  const { createTweet } = useTweetsApi()
   const user = {
     id: 'u1',
     username: 'byrookas',
