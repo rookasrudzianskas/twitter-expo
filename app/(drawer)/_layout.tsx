@@ -2,7 +2,8 @@
 import { Stack, withLayoutContext } from "expo-router";
 import {createDrawerNavigator, DrawerContentScrollView, DrawerItemList} from '@react-navigation/drawer';
 import React from "react";
-import {Text} from "react-native";
+import {ActivityIndicator, Text, View} from "react-native";
+import {useAuth} from "../../context/AuthContext";
 
 const DrawerNavigator = createDrawerNavigator().Navigator;
 
@@ -22,6 +23,15 @@ function CustomDrawerContent(props) {
   )
 }
 export default function DrawerLayout() {
+  const {authToken} = useAuth();
+
+  if(!authToken) {
+    return (
+      <View className="h-screen flex items-center justify-center">
+        <ActivityIndicator />
+      </View>
+    )
+  }
   return (
     <Drawer drawerContent={(props) => <CustomDrawerContent {...props} />}>
       <Drawer.Screen name="(tabs)" options={{ headerShown: false, title: 'Home' }} />

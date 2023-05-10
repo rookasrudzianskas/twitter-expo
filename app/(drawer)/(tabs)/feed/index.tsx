@@ -11,13 +11,12 @@ import {useQuery} from "@tanstack/react-query";
 
 export default function TabOneScreen() {
   const router = useRouter()
-  const [tweets, setTweets] = useState([])
   const { listTweets } = useTweetsApi()
 
-  const { isLoading, error, data } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ['tweets'],
     queryFn: listTweets,
-  })
+  });
 
   if(isLoading) {
     return <View className="h-screen flex items-center justify-center"><ActivityIndicator /></View>
@@ -30,7 +29,7 @@ export default function TabOneScreen() {
   return (
     <View className="h-full">
       <FlatList
-        data={tweets}
+        data={data}
         showsVerticalScrollIndicator={false}
         renderItem={({item}) => <Tweet tweet={item} />}
       />
